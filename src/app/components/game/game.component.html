@@ -1,0 +1,6 @@
+<div>
+    @for (game of games; track game.id) {
+        <img [ngSrc]="game.image" [alt]="game.alt" width="250" height="350" priority/>
+    }
+</div>
+

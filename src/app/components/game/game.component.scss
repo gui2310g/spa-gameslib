@@ -1,0 +1,26 @@
+div { 
+    width: 100%;
+    max-width: 850px;
+    justify-content: center; 
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+   
+    img { 
+        object-fit: contain; 
+        max-width: 250px;
+        height: auto;
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+    }
+
+    @media (max-width: 1180px) {
+        img { max-width: 180px;}
+    }
+}
