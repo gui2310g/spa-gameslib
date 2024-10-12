@@ -5,10 +5,10 @@ import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
 @Component({
     selector: "app-gamepage",
-    templateUrl: "./gamespage.component.html",
-    styleUrl: "./gamespage.component.scss",
+    templateUrl: "./gamesSearch.component.html",
+    styleUrl: "./gamesSearch.component.scss",
     standalone: true,
     imports: [GamesListsComponent, MatIcon, MatButton, GameComponent]
 })
-export class GamesPageComponent {
+export class GamesSearchComponent {
 }

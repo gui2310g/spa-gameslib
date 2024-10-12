@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { NgStyle, NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 export interface Game {
   id: number;
@@ -10,7 +11,7 @@ export interface Game {
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage],
+  imports: [NgStyle, NgOptimizedImage, RouterLink],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
   encapsulation: ViewEncapsulation.Emulated
