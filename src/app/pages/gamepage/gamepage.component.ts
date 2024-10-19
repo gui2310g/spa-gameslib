@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list'
 import { MatIconButton } from '@angular/material/button';
+
 export interface Image {
   id: number;
   src: string;
