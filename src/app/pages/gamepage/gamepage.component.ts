@@ -11,13 +11,13 @@ export interface Image {
   selector: 'app-game',
   standalone: true,
   imports: [NgOptimizedImage, MatGridList, MatGridTile, MatIconButton],
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss'],
+  templateUrl: './gamepage.component.html',
+  styleUrls: ['./gamepage.component.scss'],
 })
 export class GamePageComponent {
   images: Image[] = [
     { id: 1, src: 'assets/gamefundo.jpg' },
-    { id: 2, src: 'assets/backgroundimage2.png' },
+    { id: 2, src: 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1262540/ss_76eb69e48a6a0cc256603c2aa0844e5e6d5c8168.jpg?t=1716834386' },
     { id: 3, src: 'assets/backgroundimage1.png' },
     { id: 4, src: 'assets/imagelogo1.png' },
     { id: 5, src: 'assets/imagelogo2.png' },

@@ -6,6 +6,6 @@ header {
 
 main {
     background-color: rgb(17, 16, 16);
-    height: auto;
-    padding: 5rem 10rem;
+    min-height: calc(100vh - 300px);
+    padding: 5rem 0 5rem 0;
 }
