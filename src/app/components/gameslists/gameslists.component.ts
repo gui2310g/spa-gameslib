@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { MatIcon } from "@angular/material/icon";
 import { MatDivider } from "@angular/material/divider";
+
 export interface Label {
     id: number,
     name: string

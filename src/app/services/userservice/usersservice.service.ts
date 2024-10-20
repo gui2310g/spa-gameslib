@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
-export class UsersserviceService {
+export class UserService {
   private apiUrl = process.env["API_URL"];
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  
 }
