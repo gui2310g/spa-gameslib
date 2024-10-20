@@ -1,6 +1,18 @@
-<div>
-    @for (game of games; track game.id) {
-        <a routerLink='/game'><img [ngSrc]="game.image" [alt]="game.alt" width="250" height="350" priority/></a>
-    }
-</div>
-
+@if(games.length > 0) {
+    <div>
+         @for (game of games; track game.id) {
+             <a routerLink='/game'>
+                 <img 
+                     [ngSrc]="game.slug" 
+                     [alt]="game.name" 
+                     width="250" 
+                     height="350" 
+                     priority
+                 />
+             </a>
+         }
+     </div>
+ } @else {
+     <p>No games in the moment</p>
+ }
+ 
