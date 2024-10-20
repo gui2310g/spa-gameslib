@@ -7,9 +7,9 @@ section {
     height: 50px;
     margin: 10px;
     
-    @media (max-width: 1180px) { 
+    @media (max-width: 840px) { 
         display: none; 
         
-        + mat-divider { display: none; }
+        section, + mat-divider { display: none; }
     }
 }

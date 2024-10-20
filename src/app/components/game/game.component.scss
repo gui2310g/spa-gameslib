@@ -7,7 +7,8 @@ div {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 50px;
-   
+    margin: 0 auto;
+    
     img { 
         object-fit: contain; 
         max-width: 250px;
@@ -20,7 +21,7 @@ div {
         }
     }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 840px) {
         img { max-width: 180px;}
     }
 }
