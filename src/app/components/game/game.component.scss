@@ -1,19 +1,35 @@
-div { 
-    width: 100%;
-    max-width: 850px;
-    justify-content: center; 
+@mixin flex($direction, $justify, $align, $gap, $wrap) {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin: 0 auto;
-    
-    img { 
-        object-fit: contain; 
-        max-width: 250px;
-        height: auto;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap; 
+    flex-wrap: $wrap;
+}
+  
+@mixin width-height($width, $max-width, $height) {
+    width: $width;
+    max-width: $max-width;
+    height: $height;
+}
 
+@mixin margin-padding($margin, $padding) {
+    margin: $margin;
+    padding: $padding;
+}
+
+$color: white;
+$bgcolor: #555;
+
+div { 
+    @include flex(row, center, none, 50px, wrap);
+    @include width-height(100%, 850px, auto);
+    @include margin-padding(0 auto, none);
+  
+    img { 
+        @include width-height(250px, 250px, auto);
+        object-fit: contain; 
+        
         &:hover {
             opacity: 0.8;
             cursor: pointer;
@@ -21,7 +37,41 @@ div {
         }
     }
 
-    @media (max-width: 840px) {
-        img { max-width: 180px;}
-    }
+    @media (max-width: 840px) { img { max-width: 180px;} }
 }
+
+::ng-deep {
+    .p-paginator {
+      @include flex(row, center, center, none, none);
+      margin-top: 20px;
+  
+      .p-paginator-page {
+        @include margin-padding(0 5px, 10px 15px);
+        background-color: #2a2a2a;
+        color: $color;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      .p-paginator-pages .p-paginator-page.p-highlight {
+        background-color: #1a73e8;
+        color: $color;
+      }
+  
+      .p-paginator-pages .p-paginator-page:hover { background-color: $bgcolor; }
+  
+      .p-paginator-prev, .p-paginator-next {
+        @include margin-padding(none, 10px 15px);
+        background-color: #2a2a2a;
+        color: $color;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      .p-paginator-prev:hover, .p-paginator-next:hover { background-color: $bgcolor; }
+  
+      .p-paginator-first, .p-paginator-last { display: none; }
+    }
+}  
