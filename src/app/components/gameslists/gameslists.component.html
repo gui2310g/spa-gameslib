@@ -1,8 +1,21 @@
-@for(label of labels; track label.id) {
-    <section>
-        <span>{{label.name}}</span>
+<p-accordion (onTabOpen)="AccordionTabOpenEvent($event)" (onTabClose)="AccordionTabCloseEvent($event)">
+    <p-accordionTab header="Genres">
+        
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum amet earum ducimus expedita rem quia officia hic sunt provident nostrum fuga illo autem voluptatibus sed, deleniti, aliquid aspernatur beatae mollitia?
+        </p>
+        
+    </p-accordionTab>
 
-        <mat-icon>filter_list</mat-icon>
-    </section> 
-    <mat-divider/>
-}
+    <p-accordionTab header="Platforms">
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
+            </p>
+    </p-accordionTab>
+
+    <p-accordionTab header="Publishers">
+            <p>
+                At vero eos et accusamus et iusto odio dignissimos...
+            </p>
+    </p-accordionTab>
+</p-accordion>
