@@ -18,4 +18,8 @@ export class GameService {
   getGenres(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/genres/findAll?page=${page}&size=${size}`);
   }
+
+  getPlatforms(page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/platforms/findAll?page=${page}&size=${size}`);
+  }
 }
