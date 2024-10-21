@@ -44,6 +44,13 @@ export class GamesListsComponent implements OnInit {
         })     
     }
     
+    LoadPublishers(): void {
+        this.gameService.getPublishers(this.page, this.size).subscribe({
+            next: (data) => this.lists = data.content,
+            error: (error) => console.error("Error by finding publishers", error),
+            complete: () => console.log("Publishers loaded succesfully")
+        })
+    }
     AccordionTabOpenEvent(event: any) {
         this.activeIndex = event.index;
         this.header = this.lists[event.index].name || "";
