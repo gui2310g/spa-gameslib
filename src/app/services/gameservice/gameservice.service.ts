@@ -22,4 +22,9 @@ export class GameService {
   getPlatforms(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/platforms/findAll?page=${page}&size=${size}`);
   }
+
+  getPublishers(page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/publishers/findAll?page=${page}&size=${size}`);
+  }
+    
 }
