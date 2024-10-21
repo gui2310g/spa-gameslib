@@ -36,7 +36,14 @@ export class GamesListsComponent implements OnInit {
         })
     }
 
-
+    LoadPlatforms(): void {
+        this.gameService.getPlatforms(this.page, this.size).subscribe({
+            next: (data) => this.lists = data.content,
+            error: (error) => console.error("Error by finding platforms", error),
+            complete: () => console.log("Platforms loaded succesfully")
+        })     
+    }
+    
     AccordionTabOpenEvent(event: any) {
         this.activeIndex = event.index;
         this.header = this.lists[event.index].name || "";
