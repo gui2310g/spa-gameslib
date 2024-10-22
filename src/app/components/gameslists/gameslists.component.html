@@ -1,19 +1,27 @@
-<p-accordion (onTabOpen)="AccordionTabOpenEvent($event)" (onTabClose)="AccordionTabCloseEvent($event)">
+<p-accordion>
     <p-accordionTab header="Genres">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum amet earum ducimus expedita rem quia officia hic sunt provident nostrum fuga illo autem voluptatibus sed, deleniti, aliquid aspernatur beatae mollitia?
-        </p>
-        
+      <ul>    
+        @for (genre of genres; track genre.id) {     
+          <li>{{genre.name}}</li>
+        }
+      </ul>
     </p-accordionTab>
-
+  
+    
     <p-accordionTab header="Platforms">
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
-            </p>
+      <ul>    
+        @for (platform of platforms; track platform.id) {     
+          <li>{{platform.name}}</li>
+        }
+      </ul>
     </p-accordionTab>
+  
     <p-accordionTab header="Publishers">
-            <p>
-                At vero eos et accusamus et iusto odio dignissimos...
-            </p>
+      <ul>    
+        @for (publisher of publishers; track publisher.id) {     
+          <li>{{publisher.name}}</li>
+        }
+      </ul>
     </p-accordionTab>
-</p-accordion>
+  </p-accordion>
+  

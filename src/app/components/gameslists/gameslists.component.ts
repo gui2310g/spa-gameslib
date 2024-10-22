@@ -5,9 +5,19 @@ import { PaginatorModule } from "primeng/paginator";
 import { AccordionModule } from 'primeng/accordion'
 import { GameService } from "../../services/gameservice/gameservice.service";
 
-interface List {
-    id: number,
-    name: string
+interface Genres {
+    id: number;
+    name: string;
+}
+
+interface Platforms {
+    id: number;
+    name: string;
+}
+
+interface Publishers {
+    id: number;
+    name: string;
 }
 
 @Component({
@@ -18,19 +28,25 @@ interface List {
     imports: [MatIcon, MatDivider, PaginatorModule, AccordionModule] 
 })  
 export class GamesListsComponent implements OnInit {
-    activeIndex: number | number[] = 0; 
-    lists: List[] = [];
+    genres: Genres[] = [];
+    platforms: Platforms[] = [];
+    publishers: Publishers[] = [];
+
     page: number = 0;
-    size: number = 6;
+    size: number = 20;
     header: string = '';
 
     constructor(private gameService: GameService) {}
 
-    ngOnInit() : void { this.LoadGenres; }
+    ngOnInit() : void { 
+        this.LoadGenres();
+        this.LoadPlatforms();
+        this.LoadPublishers();
+    }
 
     LoadGenres(): void {
         this.gameService.getGenres(this.page, this.size).subscribe({
-            next: (data) => this.lists = data.content,
+            next: (data) => this.genres = data.content,
             error: (error) => console.error("Error by finding genres", error),
             complete: () => console.log("Genres loaded successfully")
         })
@@ -38,7 +54,7 @@ export class GamesListsComponent implements OnInit {
 
     LoadPlatforms(): void {
         this.gameService.getPlatforms(this.page, this.size).subscribe({
-            next: (data) => this.lists = data.content,
+            next: (data) => this.platforms = data.content,
             error: (error) => console.error("Error by finding platforms", error),
             complete: () => console.log("Platforms loaded succesfully")
         })     
@@ -46,18 +62,9 @@ export class GamesListsComponent implements OnInit {
     
     LoadPublishers(): void {
         this.gameService.getPublishers(this.page, this.size).subscribe({
-            next: (data) => this.lists = data.content,
+            next: (data) => this.publishers = data.content,
             error: (error) => console.error("Error by finding publishers", error),
             complete: () => console.log("Publishers loaded succesfully")
         })
-    }
-    AccordionTabOpenEvent(event: any) {
-        this.activeIndex = event.index;
-        this.header = this.lists[event.index].name || "";
-    }
-
-    AccordionTabCloseEvent(event: any) {
-        this.activeIndex = -1;
-        this.header = '';
     }
 }
