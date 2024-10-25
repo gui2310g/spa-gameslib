@@ -3,13 +3,8 @@ article {
     margin: 0 auto;
     color: white;
 
-    img {
-        width: 50%;
-    }
-
-    p { text-align: justify;}
-    h1, h4 {color: #f7d354;}
-
+    h1 {color: #f7d354;}
+    
     .titles-section {
         position: relative;
         display: flex;
@@ -38,7 +33,6 @@ article {
             color: white;
 
             a { 
-                
                 border: none;
                 background-color: transparent;
                 font-size: 5rem;
@@ -47,24 +41,6 @@ article {
                 text-decoration: none;
             }
         }
-    }
-
-    .descriptions-section {
-        border: 1px solid red;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 100px;
-
-        .description {
-            width: 70%;
-            min-width: 340px;
-            justify-content: space-around;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            border: 1px solid green;
-        };
     }
 }
 

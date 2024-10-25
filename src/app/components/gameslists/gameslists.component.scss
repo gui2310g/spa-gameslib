@@ -1,0 +1,26 @@
+.descriptions-section {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+
+    
+
+
+    .description {
+        width: 70%;
+        min-width: 340px;
+        justify-content: space-around;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid green;
+        
+        img { width: 50%; }
+
+        p { text-align: justify;}
+        
+        h4 {color: #f7d354;}
+    };
+}
