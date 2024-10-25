@@ -26,3 +26,36 @@ article {
         }
     }
 }
+
+::ng-deep {
+    .p-accordion {
+        width: 250px;
+        
+        .p-accordion-header {
+            color: #f7d354;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            
+            .p-accordion-header-link { 
+                font-size: 1.1rem; 
+                gap: 20px;
+            }
+        }
+
+        .p-accordion-content {
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            color: white;
+            border-top: 1px solid #dee2e6;
+
+            li { 
+                list-style: none;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 840px) {
+            display: none;
+        }
+    }
+}
