@@ -3,11 +3,31 @@
         <div class="title">
             <h1>Gameslib</h1>
             <h3>A place where you can find your favorite games</h3>
-
-            <a href="#teste">↓</a>
         </div>
     </section>
     
-    <app-gameslists />
+    <app-gameslists 
+        title="Dive into New Worlds" 
+        description="The world of gaming is vast, offering a wide array of genres that cater to every kind of player. Whether you're looking for heart-pounding action or an emotional story-driven journey, there's something for everyone."
+        src='assets/genre_image.png'
+        alt="genre image"
+        [isReverse]="false"
+    />
+   
+    <app-gameslists
+        title="Your Gateway to the Gaming Universe"
+        description="Gaming platforms are the foundation that bring your favorite games to life. Whether you're playing at home or on the go, the right platform delivers the immersive experiences, cutting-edge graphics, and gameplay you crave."
+        src='assets/platform_image.png'
+        alt="platform image"
+        [isReverse]="true"
+    />
+
+    <app-gameslists
+        title="The Powerhouses Behind Your Favorite Games"
+        description="Behind every great game is a publisher that brings it to life, ensuring it reaches gamers worldwide. These companies are the driving force behind the global gaming industry."
+        src='assets/publisher_image.png'
+        alt="publisher image"
+        [isReverse]="false"
+    />
 
 </article>

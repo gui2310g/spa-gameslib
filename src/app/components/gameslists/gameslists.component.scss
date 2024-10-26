@@ -1,26 +1,38 @@
-.descriptions-section {
-    border: 1px solid red;
+@mixin flex($direction: row, $justify) {
     display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
     align-items: center;
-    flex-direction: column;
-    gap: 100px;
+}
+  
+.descriptions-section {
+    @include flex(column, center);
+    color: white;
+    margin-top: 20px;
 
-    
-
-
-    .description {
+    .description, .reverse {
+        @include flex(row, space-around);
         width: 70%;
-        min-width: 340px;
-        justify-content: space-around;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        border: 1px solid green;
-        
+        min-width: 305px;
+        margin-bottom: 50px;
+     
+        &.reverse { @include flex(row-reverse, space-around); }
+
         img { width: 50%; }
 
         p { text-align: justify;}
-        
+
         h4 {color: #f7d354;}
-    };
+
+        @media (max-width: 767px) {
+            @include flex(column-reverse, center);
+            
+            &.reverse { @include flex(column-reverse, center);}
+        };
+    }
+}
+
+@keyframes showbyscroll {
+    0% { opacity: 0; transform: translateY(-100%); }
+    100% { opacity: 1; transform: translateY(0); }
 }
