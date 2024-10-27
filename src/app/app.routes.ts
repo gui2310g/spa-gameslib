@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: GamesSearchComponent
   },
   {
-    path: 'game',
+    path: 'game/:id',
     component: GamePageComponent
   },
 ];
