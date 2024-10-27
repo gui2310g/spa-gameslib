@@ -21,26 +21,36 @@
 $color: white;
 $bgcolor: #555;
 
-div { 
+/*global style */
+img { 
+  @include width-height(250px, 250px, auto);
+  object-fit: contain; 
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+}
+
+@media (max-width: 840px) { img { max-width: 180px;} }
+
+/* game class to GameSearch page */ 
+.gameSearch { 
     @include flex(row, center, none, 50px, wrap);
     @include width-height(100%, 850px, auto);
     @include margin-padding(0 auto, none);
-  
-    img { 
-        @include width-height(250px, 250px, auto);
-        object-fit: contain; 
-        
-        &:hover {
-            opacity: 0.8;
-            cursor: pointer;
-            transition: all 0.5s;
-        }
-    }
+}
 
-    @media (max-width: 840px) { img { max-width: 180px;} }
+/* game class to Homepage */
+.gameHome {
+  @include flex(row, center, none, 50px, nowrap);
+  overflow-x: auto;
 }
 
 ::ng-deep {
+  .showPaginator {
+    display: block;
+    
     .p-paginator {
       @include flex(row, center, center, none, none);
       margin-top: 20px;
@@ -74,4 +84,7 @@ div {
   
       .p-paginator-first, .p-paginator-last { display: none; }
     }
+  }
+
+  .hidePaginator { display: none; }
 }  

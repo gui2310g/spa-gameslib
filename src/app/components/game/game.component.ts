@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgStyle, NgOptimizedImage } from '@angular/common';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { NgStyle, NgOptimizedImage, NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { GameService } from '../../services/gameservice/gameservice.service';
 import { PaginatorModule } from 'primeng/paginator';
@@ -13,12 +13,13 @@ interface Game {
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, RouterLink, PaginatorModule],
+  imports: [NgStyle, NgOptimizedImage, RouterLink, PaginatorModule, NgClass],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
   encapsulation: ViewEncapsulation.Emulated
 })
 export class GameComponent implements OnInit{
+  @Input() styledInSearchPage: boolean = false;
   games: Game[] = [];
   page: number = 0;
   size: number = 6;
