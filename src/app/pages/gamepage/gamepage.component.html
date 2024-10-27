@@ -40,7 +40,14 @@
         }
       </span>
       
-      <span>Genre: Action</span> <span>Publisher: Rockstar Games</span>
+      <span>
+        Genre: 
+        @for(genre of genres; track genre.id) {
+          {{genre.name}}
+        }
+      </span> 
+
+      <span>Publisher: Rockstar Games</span>
     </section>
   </article> 
 }

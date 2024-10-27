@@ -23,6 +23,10 @@ interface Platforms {
   name: string;
 }
 
+interface Genre {
+  id: number,
+  name: string
+}
 
 @Component({
   selector: 'app-game',
@@ -33,6 +37,7 @@ interface Platforms {
 })
 export class GamePageComponent implements OnInit{
   game!: Game;
+  genres: Genre[] = [];
   platforms: Platforms[] = [];
 
   images: Image[] = [
@@ -49,25 +54,28 @@ export class GamePageComponent implements OnInit{
     if(id) {
       this.LoadGame(id);
       this.LoadPlatformsByGame(id);
+      this.LoadGenreByGame(id);
     }
   }
 
   LoadGame(id: number): void {
     this.gameService.getGame(id).subscribe({
-      next: (data) => (this.game = data),
-      error: (error) => console.error("Error by finding the game", error),
-      complete: () => console.log("Game loaded successfully")
+      next: (data) => (this.game = data)
     })
   }
 
   LoadPlatformsByGame(gameId: number): void {
     this.gameService.getPlatformsByGameId(gameId).subscribe({
-      next: (data) => (this.platforms = data),
-      error: (error) => console.error("Error by finding the platform", error),
-      complete: () => console.log("platforms loaded successfully")
-    })
-      
+      next: (data) => (this.platforms = data)
+    })   
   }
+
+  LoadGenreByGame(gameId: number): void {
+    this.gameService.getGenresByGameId(gameId).subscribe({
+      next: (data) => (this.genres = data)
+    }) 
+  }
+
   selectedImage: string = this.images[0].src;
 
   selectImage(imageSrc: string): void {
