@@ -1,9 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list'
 import { MatIconButton } from '@angular/material/button';
+import { GameService } from '../../services/gameservice/gameservice.service';
 
-export interface Image {
+interface Game {
+  id: number;
+  name: string,
+  description: string,
+  background_image: string,
+  image_logo: string,
+  rating: number
+}
+
+interface Image {
   id: number;
   src: string;
 }
@@ -11,18 +21,34 @@ export interface Image {
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [NgOptimizedImage, MatGridList, MatGridTile, MatIconButton],
+  imports: [NgOptimizedImage, MatIconButton],
   templateUrl: './gamepage.component.html',
   styleUrls: ['./gamepage.component.scss'],
 })
-export class GamePageComponent {
+export class GamePageComponent implements OnInit{
+  game!: Game;
+
   images: Image[] = [
     { id: 1, src: 'assets/gamefundo.jpg' },
     { id: 2, src: 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1262540/ss_76eb69e48a6a0cc256603c2aa0844e5e6d5c8168.jpg?t=1716834386' },
     { id: 3, src: 'assets/backgroundimage1.png' },
     { id: 4, src: 'assets/imagelogo1.png' },
     { id: 5, src: 'assets/imagelogo2.png' },
-  ];
+  ]
+  constructor(private gameService: GameService, private route: ActivatedRoute) {};
+
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if(id) this.LoadGame(id);
+  }
+
+  LoadGame(id: number): void {
+    this.gameService.getGame(id).subscribe({
+      next: (data) => (this.game = data),
+      error: (error) => console.error("Error by finding the game", error),
+      complete: () => console.log("Game loaded successfully")
+    })
+  }
 
   selectedImage: string = this.images[0].src;
 

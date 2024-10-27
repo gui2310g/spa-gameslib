@@ -1,7 +1,7 @@
 @if(games.length > 0) {
     <div [ngClass]="{'gameSearch': styledInSearchPage, 'gameHome': !styledInSearchPage }">
          @for (game of games; track game.id) {
-            <a routerLink='/game'>
+            <a [routerLink]="['/game', game.id]">
                 <img 
                     [ngSrc]="game.slug" 
                     [alt]="game.name" 
@@ -24,4 +24,3 @@
  } @else {
      <p>No games in the moment</p>
  }
- 
