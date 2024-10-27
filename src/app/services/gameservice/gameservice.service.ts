@@ -11,6 +11,7 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
+
   getGames(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/games/findAll?page=${page}&size=${size}`);
   }
@@ -23,6 +24,10 @@ export class GameService {
     return this.http.get<any>(`${this.apiUrl}/genres/findAll?page=${page}&size=${size}`);
   }
 
+  getGenresByGameId(gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/genres/game/${gameId}`)
+  }
+  
   getPlatforms(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/platforms/findAll?page=${page}&size=${size}`);
   }
