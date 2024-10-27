@@ -18,7 +18,7 @@ export class GameService {
   getGame(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/games/find/${id}`)
   }
-  
+
   getGenres(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/genres/findAll?page=${page}&size=${size}`);
   }
@@ -27,6 +27,13 @@ export class GameService {
     return this.http.get<any>(`${this.apiUrl}/platforms/findAll?page=${page}&size=${size}`);
   }
 
+  getPlatformsByGameId(gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/platforms/game/${gameId}`)
+  }
+  
+  getPlatformsByGame(platformId: number, gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/games/platforms/find/${platformId}/${gameId}`)
+  }
   getPublishers(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/publishers/findAll?page=${page}&size=${size}`);
   }

@@ -18,6 +18,12 @@ interface Image {
   src: string;
 }
 
+interface Platforms {
+  id: number;
+  name: string;
+}
+
+
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -27,6 +33,7 @@ interface Image {
 })
 export class GamePageComponent implements OnInit{
   game!: Game;
+  platforms: Platforms[] = [];
 
   images: Image[] = [
     { id: 1, src: 'assets/gamefundo.jpg' },
@@ -39,7 +46,10 @@ export class GamePageComponent implements OnInit{
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    if(id) this.LoadGame(id);
+    if(id) {
+      this.LoadGame(id);
+      this.LoadPlatformsByGame(id);
+    }
   }
 
   LoadGame(id: number): void {
@@ -50,6 +60,14 @@ export class GamePageComponent implements OnInit{
     })
   }
 
+  LoadPlatformsByGame(gameId: number): void {
+    this.gameService.getPlatformsByGameId(gameId).subscribe({
+      next: (data) => (this.platforms = data),
+      error: (error) => console.error("Error by finding the platform", error),
+      complete: () => console.log("platforms loaded successfully")
+    })
+      
+  }
   selectedImage: string = this.images[0].src;
 
   selectImage(imageSrc: string): void {

@@ -33,7 +33,13 @@
     </section>
 
     <section class="dev-pub-section">
-      <span>Platforms: Playstation 3 | Playstation 2 | PC | Nintendo Wii</span>
+      <span>
+        Platforms:
+        @for(platform of platforms; track platform.id) {
+          {{platform.name}} |
+        }
+      </span>
+      
       <span>Genre: Action</span> <span>Publisher: Rockstar Games</span>
     </section>
   </article> 
