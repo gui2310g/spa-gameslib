@@ -50,4 +50,8 @@ export class GameService {
   getScreenshotsByGameId(gameId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/screenshots/game/${gameId}`)
   }
+  
+  getEsrbRatingByGameId(gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/ratings/game/${gameId}`)
+  }
 }
