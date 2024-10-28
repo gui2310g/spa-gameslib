@@ -33,6 +33,11 @@ interface Publishers {
   name: string
 }
 
+interface Ratings {
+  id: number,
+  slug: string,
+  name: string
+}
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -47,6 +52,7 @@ export class GamePageComponent implements OnInit {
   publishers: Publishers[] = [];
   images: Images[] = [];
   selectedImage: string = '';
+  ratings: Ratings[] = [];
 
   constructor(private gameService: GameService, private route: ActivatedRoute) {};
 
@@ -59,6 +65,7 @@ export class GamePageComponent implements OnInit {
       this.LoadGenresByGame(id);
       this.LoadPublishersByGame(id);
       this.LoadScreenshotsByGame(id);
+      this.LoadEsrbRatingByGame(id);
     }
   }
 
@@ -95,6 +102,12 @@ export class GamePageComponent implements OnInit {
     }) 
   }
 
+  LoadEsrbRatingByGame(gameId: number): void {
+    this.gameService.getEsrbRatingByGameId(gameId).subscribe({
+      next: (data) => (this.ratings = data)
+    })
+      
+  }
   selectImage(imageSrc: string): void {
     this.selectedImage = imageSrc;
   }

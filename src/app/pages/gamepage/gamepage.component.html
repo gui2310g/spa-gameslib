@@ -18,8 +18,10 @@
       </div>
 
       <div class="ratings-note">
-        <img src="assets/ESRB.png" alt="rating image" />
-
+        @for(rating of ratings; track rating.id) { 
+          <img src="{{rating.slug}}" alt="{{rating.name}}" /> 
+        }
+        
         <div class="game-note"><span>{{game.rating}}</span></div>
       </div>
     </section>
