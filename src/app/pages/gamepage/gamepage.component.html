@@ -47,7 +47,12 @@
         }
       </span> 
 
-      <span>Publisher: Rockstar Games</span>
+      <span>
+        Publisher: 
+        @for(publisher of publishers; track publisher.id) {
+          {{publisher.name}}
+        }
+      </span>
     </section>
   </article> 
 }

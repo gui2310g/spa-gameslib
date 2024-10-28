@@ -23,7 +23,12 @@ interface Platforms {
   name: string;
 }
 
-interface Genre {
+interface Genres {
+  id: number,
+  name: string
+}
+
+interface Publishers {
   id: number,
   name: string
 }
@@ -37,8 +42,9 @@ interface Genre {
 })
 export class GamePageComponent implements OnInit{
   game!: Game;
-  genres: Genre[] = [];
+  genres: Genres[] = [];
   platforms: Platforms[] = [];
+  publishers: Publishers[] = [];
 
   images: Image[] = [
     { id: 1, src: 'assets/gamefundo.jpg' },
@@ -54,7 +60,8 @@ export class GamePageComponent implements OnInit{
     if(id) {
       this.LoadGame(id);
       this.LoadPlatformsByGame(id);
-      this.LoadGenreByGame(id);
+      this.LoadGenresByGame(id);
+      this.LoadPublishersByGame(id);
     }
   }
 
@@ -70,10 +77,16 @@ export class GamePageComponent implements OnInit{
     })   
   }
 
-  LoadGenreByGame(gameId: number): void {
+  LoadGenresByGame(gameId: number): void {
     this.gameService.getGenresByGameId(gameId).subscribe({
       next: (data) => (this.genres = data)
     }) 
+  }
+
+  LoadPublishersByGame(gameId: number): void {
+    this.gameService.getPublishersByGameId(gameId).subscribe({
+      next: (data) => (this.publishers = data)
+    })
   }
 
   selectedImage: string = this.images[0].src;
