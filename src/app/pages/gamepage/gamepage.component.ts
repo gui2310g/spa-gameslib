@@ -13,9 +13,9 @@ interface Game {
   rating: number
 }
 
-interface Image {
+interface Images {
   id: number;
-  src: string;
+  url: string;
 }
 
 interface Platforms {
@@ -40,28 +40,25 @@ interface Publishers {
   templateUrl: './gamepage.component.html',
   styleUrls: ['./gamepage.component.scss'],
 })
-export class GamePageComponent implements OnInit{
+export class GamePageComponent implements OnInit {
   game!: Game;
   genres: Genres[] = [];
   platforms: Platforms[] = [];
   publishers: Publishers[] = [];
+  images: Images[] = [];
+  selectedImage: string = '';
 
-  images: Image[] = [
-    { id: 1, src: 'assets/gamefundo.jpg' },
-    { id: 2, src: 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1262540/ss_76eb69e48a6a0cc256603c2aa0844e5e6d5c8168.jpg?t=1716834386' },
-    { id: 3, src: 'assets/backgroundimage1.png' },
-    { id: 4, src: 'assets/imagelogo1.png' },
-    { id: 5, src: 'assets/imagelogo2.png' },
-  ]
   constructor(private gameService: GameService, private route: ActivatedRoute) {};
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+
     if(id) {
       this.LoadGame(id);
       this.LoadPlatformsByGame(id);
       this.LoadGenresByGame(id);
       this.LoadPublishersByGame(id);
+      this.LoadScreenshotsByGame(id);
     }
   }
 
@@ -89,7 +86,14 @@ export class GamePageComponent implements OnInit{
     })
   }
 
-  selectedImage: string = this.images[0].src;
+  LoadScreenshotsByGame(gameId: number): void {
+    this.gameService.getScreenshotsByGameId(gameId).subscribe({
+      next: (data) => {
+        this.images = data;
+        if(this.images.length > 0) this.selectedImage = this.images[0].url;  
+      }
+    }) 
+  }
 
   selectImage(imageSrc: string): void {
     this.selectedImage = imageSrc;

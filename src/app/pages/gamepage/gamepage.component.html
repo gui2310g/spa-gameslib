@@ -7,7 +7,8 @@
 
       <div class="secondary-images">
         @for(image of images; track image.id) {
-        <img src="{{ image.src }}" (click)="selectImage(image.src)" /> }
+          <img src="{{ image.url }}" (click)="selectImage(image.url)" /> 
+        }
       </div>
     </section>
 
@@ -43,7 +44,7 @@
       <span>
         Genre: 
         @for(genre of genres; track genre.id) {
-          {{genre.name}} |
+          {{genre.name}} 
         }
       </span> 
 
