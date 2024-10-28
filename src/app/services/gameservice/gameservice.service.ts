@@ -46,4 +46,8 @@ export class GameService {
   getPublishersByGameId(gameId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/publishers/game/${gameId}`)
   }
+
+  getScreenshotsByGameId(gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/screenshots/game/${gameId}`)
+  }
 }
