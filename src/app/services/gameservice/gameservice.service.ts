@@ -43,4 +43,7 @@ export class GameService {
     return this.http.get<any>(`${this.apiUrl}/publishers/findAll?page=${page}&size=${size}`);
   }
     
+  getPublishersByGameId(gameId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/publishers/game/${gameId}`)
+  }
 }
