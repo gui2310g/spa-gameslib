@@ -14,6 +14,12 @@
 
 $color: white;
 
+.red-background { background-color: rgb(227, 4, 4); }
+
+.yellow-background { background-color: rgb(189, 189, 2); }
+
+.default-background { background-color: rgb(3, 131, 3); }
+
 article {
   display: grid;
   grid-template-columns: 66% 33%;
@@ -40,7 +46,7 @@ article {
     .secondary-images {
       @include flex(none, space-between, none, 10px);
       overflow-x: auto;
-      
+
       img {
         @include width-height(96px, 96px, auto);
         height: auto;
@@ -75,7 +81,6 @@ article {
       .game-note {
         @include flex(none, center, center, none);
         @include width-height(25%, 25%, auto);
-        background-color: green;
         font-size: 2.5rem;
         font-weight: bold;
         border-radius: 10px;

@@ -22,7 +22,10 @@
           <img src="{{rating.slug}}" alt="{{rating.name}}" /> 
         }
         
-        <div class="game-note"><span>{{game.rating}}</span></div>
+        
+        <div [ngClass]="getGameNoteClass(game.rating)" class="game-note">
+          <span>{{game.rating}}</span>
+        </div>
       </div>
     </section>
 

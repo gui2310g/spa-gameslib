@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { GameService } from '../../services/gameservice/gameservice.service';
 
@@ -41,7 +41,7 @@ interface Ratings {
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [NgOptimizedImage, MatIconButton],
+  imports: [NgClass, MatIconButton],
   templateUrl: './gamepage.component.html',
   styleUrls: ['./gamepage.component.scss'],
 })
@@ -53,7 +53,7 @@ export class GamePageComponent implements OnInit {
   images: Images[] = [];
   selectedImage: string = '';
   ratings: Ratings[] = [];
-
+  
   constructor(private gameService: GameService, private route: ActivatedRoute) {};
 
   ngOnInit(): void {
@@ -110,5 +110,14 @@ export class GamePageComponent implements OnInit {
   }
   selectImage(imageSrc: string): void {
     this.selectedImage = imageSrc;
+  }  
+  getGameNoteClass(rating: number): string {
+    if (rating < 50) {
+      return 'red-background';
+    } else if (rating < 70) {
+      return 'yellow-background';
+    } else {
+      return 'default-background'; 
+    }
   }
 }
