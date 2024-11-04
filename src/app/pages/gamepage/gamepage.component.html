@@ -2,12 +2,12 @@
   <article>
     <section class="image-section">
       <div class="main-image">
-        <img src="{{ selectedImage }}" alt="Game Image" />
+        <img [src]="selectedImage" [alt]="'Game Image'" />
       </div>
 
       <div class="secondary-images">
         @for(image of images; track image.id) {
-          <img src="{{ image.url }}" (click)="selectImage(image.url)" /> 
+          <img [src]="image.url" (click)="selectImage(image.url)" /> 
         }
       </div>
     </section>
@@ -19,7 +19,7 @@
 
       <div class="ratings-note">
         @for(rating of ratings; track rating.id) { 
-          <img src="{{rating.slug}}" alt="{{rating.name}}" /> 
+          <img [src]="rating.slug" [alt]="rating.name" /> 
         }
         
         
