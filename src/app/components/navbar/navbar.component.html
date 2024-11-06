@@ -7,12 +7,18 @@
         <a routerLink="/" class="title">Gameslib</a>
     </div>
 
-    <div class="search-bar">
+    <form (ngSubmit)="handleSubmit()" class="search-bar">
         <mat-icon class="search-icon">search</mat-icon>
-
-        <input type="text" placeholder="Search" class="input"/>
-    </div>
-
+          
+        <input 
+            type="text" 
+            placeholder="Search a game" 
+            class="input"
+            [(ngModel)]="search"
+            name="search"
+        />
+    </form>
+   
     <div class="navbar-right">
         <a href="/login">Log in</a>
         

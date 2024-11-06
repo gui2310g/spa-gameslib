@@ -25,12 +25,25 @@ $bgcolor: #555;
 img { 
   @include width-height(250px, 250px, auto);
   object-fit: contain; 
+
   &:hover {
     opacity: 0.8;
     cursor: pointer;
     transition: all 0.5s;
   }
 }
+a { 
+  text-decoration: none;
+  color: $color;
+
+  &:hover {
+    color: #f7d354;
+    transition: all 0.5s;
+  }
+ }
+
+.show { display: block }
+.hide { display: none }
 
 @media (max-width: 840px) { img { max-width: 180px;} }
 
@@ -48,9 +61,6 @@ img {
 }
 
 ::ng-deep {
-  .showPaginator {
-    display: block;
-    
     .p-paginator {
       @include flex(row, center, center, none, none);
       margin-top: 20px;
@@ -84,7 +94,4 @@ img {
   
       .p-paginator-first, .p-paginator-last { display: none; }
     }
-  }
-
-  .hidePaginator { display: none; }
-}  
+}

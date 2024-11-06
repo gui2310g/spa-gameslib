@@ -20,6 +20,8 @@ interface Game {
 })
 export class GameComponent implements OnInit{
   @Input() styledInSearchPage: boolean = false;
+  @Input() gamess: any;
+
   games: Game[] = [];
   page: number = 0;
   size: number = 6;

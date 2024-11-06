@@ -7,12 +7,19 @@
          } 
     </div>
     
+    <a 
+        [routerLink]="'/search'" 
+        [ngClass]="{'show': !styledInSearchPage, 'hide': styledInSearchPage}"
+        >
+            Click here to find more games
+    </a>
+    
     <p-paginator
         (onPageChange)="onPageChange($event)" 
         [first]="first"
         [rows]="size" 
         [totalRecords]="totalRecords"
-        [ngClass]="{'showPaginator': styledInSearchPage, 'hidePaginator': !styledInSearchPage}"
+        [ngClass]="{'show': styledInSearchPage, 'hide': !styledInSearchPage}"
     />
     
  } @else {

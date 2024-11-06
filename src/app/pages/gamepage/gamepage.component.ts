@@ -3,41 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { GameService } from '../../services/gameservice/gameservice.service';
+import { Game, Images, Platforms, Genres, Publishers, Ratings } from '../../models/game.model';
 
-interface Game {
-  id: number;
-  name: string,
-  description: string,
-  background_image: string,
-  image_logo: string,
-  rating: number
-}
-
-interface Images {
-  id: number;
-  url: string;
-}
-
-interface Platforms {
-  id: number;
-  name: string;
-}
-
-interface Genres {
-  id: number,
-  name: string
-}
-
-interface Publishers {
-  id: number,
-  name: string
-}
-
-interface Ratings {
-  id: number,
-  slug: string,
-  name: string
-}
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -108,9 +75,11 @@ export class GamePageComponent implements OnInit {
     })
       
   }
+  
   selectImage(imageSrc: string): void {
     this.selectedImage = imageSrc;
   }  
+
   getGameNoteClass(rating: number): string {
     if (rating < 50) {
       return 'red-background';

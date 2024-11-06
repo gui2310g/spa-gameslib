@@ -5,21 +5,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
 import { AccordionModule } from 'primeng/accordion'
 import { GameService } from "../../services/gameservice/gameservice.service";
-
-interface Genres {
-    id: number;
-    name: string;
-}
-
-interface Platforms {
-    id: number;
-    name: string;
-}
-
-interface Publishers {
-    id: number;
-    name: string;
-}
+import { Genres, Platforms, Publishers } from "../../models/game.model";
 
 @Component({
     selector: "app-gamepage",

@@ -1,0 +1,13 @@
+<article>
+  @if(games.length > 0) {
+      <h2>Results for <span>"{{ query }}"</span></h2>
+      
+      <div class="games-grid">
+        @for(game of games; track game.id) {
+          <a [routerLink]="['/game', game.id]">
+              <img [src]="game.slug" [alt]="game.name" />
+          </a>  
+        }
+      </div>
+  }
+</article>
