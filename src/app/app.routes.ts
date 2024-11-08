@@ -3,6 +3,7 @@ import { GamePageComponent } from './pages/gamepage/gamepage.component';
 import { GamesSearchComponent } from './pages/gamesSearch/gamesSearch.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SearchedGamesComponent } from './pages/searched-games/searched-games.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 export const routes: Routes = [
   {
@@ -21,4 +22,8 @@ export const routes: Routes = [
     path: 'game/:id',
     component: GamePageComponent
   },
+  {
+    path: 'signup',
+    component: SignupComponent
+  }
 ];

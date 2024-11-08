@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
 import { GamesListsComponent } from "../../components/gameslists/gameslists.component";
 import { GameComponent } from "../../components/game/game.component";
-import { MatIcon } from "@angular/material/icon";
-import { MatButton } from "@angular/material/button";
 import { AccordionModule } from 'primeng/accordion'
 import { GameService } from "../../services/gameservice/gameservice.service";
 import { Genres, Platforms, Publishers } from "../../models/game.model";
@@ -12,7 +10,7 @@ import { Genres, Platforms, Publishers } from "../../models/game.model";
     templateUrl: "./gamesSearch.component.html",
     styleUrl: "./gamesSearch.component.scss",
     standalone: true,
-    imports: [GamesListsComponent, MatIcon, MatButton, GameComponent, AccordionModule]
+    imports: [GamesListsComponent, GameComponent, AccordionModule]
 })
 export class GamesSearchComponent {
     genres: Genres[] = [];
