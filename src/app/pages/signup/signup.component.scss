@@ -6,7 +6,6 @@ article {
     align-items: center;
     color: white;
     padding: 5rem 0 5rem 0;
-    border: 1px solid red;
     
     h2 { color: #f7d354}
 
@@ -30,16 +29,26 @@ article {
             input::placeholder { padding-left: 10px;}
         }
 
+        button {
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+
+            &:hover {
+                background-color: #f7d354;
+                color: black;
+                transition: all 0.5s;
+            }
+        }
         a {
             padding-top: 10px;
             text-decoration: none;
             color: white;
-
+        
             &:hover {
                 color: #f7d354;
                 transition: all 0.5s;
             }
         }
     }
-
 }
