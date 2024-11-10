@@ -20,8 +20,13 @@
     </form>
    
     <div class="navbar-right">
-        <a href="/login">Log in</a>
-        
-        <a href="/signup">Sign up</a>
+        @if(isLoggedIn()) {
+            <span>teste</span>
+            <button (click)="logout()">Logout</button>
+        } @else {
+             <a href="/login">Log in</a>
+            <a href="/signup">Sign up</a>
+        }
+       
     </div>
 </nav>
