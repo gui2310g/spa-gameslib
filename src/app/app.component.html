@@ -1,10 +1,12 @@
-<header>
-  <app-navbar/>
-</header>
-
+@if(showNavFooter) {
+  <header>
+    <app-navbar/>
+  </header>
+}
 <main>
   <router-outlet />
 </main>
 
-<app-footer/>
-
+@if(showNavFooter) { 
+  <app-footer/> 
+}

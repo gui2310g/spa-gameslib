@@ -1,30 +1,29 @@
 <article>
-    <app-game [styledInSearchPage]="true"/> 
+  <app-game [styledInSearchPage]="true" />
 
-    <p-accordion>
-        <p-accordionTab header="Genres">
-          <ul>    
-            @for (genre of genres; track genre.id) {     
-              <li>{{genre.name}}</li>
-            }
-          </ul>
-        </p-accordionTab>
-      
-        
-        <p-accordionTab header="Platforms">
-          <ul>    
-            @for (platform of platforms; track platform.id) {     
-              <li>{{platform.name}}</li>
-            }
-          </ul>
-        </p-accordionTab>
-      
-        <p-accordionTab header="Publishers">
-          <ul>    
-            @for (publisher of publishers; track publisher.id) {     
-              <li>{{publisher.name}}</li>
-            }
-          </ul>
-        </p-accordionTab>
-    </p-accordion>
+  <p-accordion>
+    <p-accordionTab header="Genres">
+      <ul>
+        @for (genre of genres; track genre.id) {
+        <li>{{ genre.name }}</li>
+        }
+      </ul>
+    </p-accordionTab>
+
+    <p-accordionTab header="Platforms">
+      <ul>
+        @for (platform of platforms; track platform.id) {
+        <li>{{ platform.name }}</li>
+        }
+      </ul>
+    </p-accordionTab>
+
+    <p-accordionTab header="Publishers">
+      <ul>
+        @for (publisher of publishers; track publisher.id) {
+        <li>{{ publisher.name }}</li>
+        }
+      </ul>
+    </p-accordionTab>
+  </p-accordion>
 </article>

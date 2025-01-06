@@ -33,7 +33,7 @@ export class GameComponent implements OnInit{
   ngOnInit(): void { this.loadGames(); }
 
   loadGames(): void {
-    this.gameService.getGames(this.page, this.size).subscribe({
+    this.gameService.getGamesByPagination(this.page, this.size).subscribe({
       next: (data) => {
         this.games = data.content,
         this.totalRecords = data.totalElements;
