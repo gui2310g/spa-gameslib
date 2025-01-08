@@ -1,22 +1,19 @@
-@mixin flex($direction: row, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: center;
-}
-  
+@use "../../utils/flex.scss";
+
 .descriptions-section {
-    @include flex(column, center);
+    @include flex.flex(column, none, center, none, none);
     color: white;
     margin-top: 20px;
 
     .description, .reverse {
-        @include flex(row, space-around);
+        @include flex.flex(row, none, space-around, none, none);
         width: 70%;
         min-width: 305px;
         margin-bottom: 50px;
      
-        &.reverse { @include flex(row-reverse, space-around); }
+        &.reverse { 
+            @include flex.flex(row-reverse, none, space-around, none, none) 
+        }
 
         img { width: 50%; }
 
@@ -25,9 +22,11 @@
         h4 {color: #f7d354;}
 
         @media (max-width: 767px) {
-            @include flex(column-reverse, center);
+            @include flex.flex(column-reverse, none, center, none, none);
             
-            &.reverse { @include flex(column-reverse, center);}
+            &.reverse { 
+                @include flex.flex(column-reverse, none, center, none, none) 
+            }
         };
     }
 }

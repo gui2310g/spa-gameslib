@@ -12,15 +12,12 @@ import { User } from '../../models/user.model';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {  
+export class NavbarComponent {  
   search = signal<string>("");
   user!: User | any;
 
   constructor(private router: Router) {};
 
-  ngOnInit(): void {
-      this.updateUserStatus();
-  }
   handleSubmit(): void {
     if(this.search()) {
       this.router.navigate(['/search'], { 
@@ -29,24 +26,25 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  updateUserStatus() {
-    const authUser = localStorage.getItem('authUser');
-    if(authUser) {
-      this.user = { username: this.user.username}
-    } else {
-      this.user = null
+  /*
+    updateUserStatus() {
+      const authUser = localStorage.getItem('authUser');
+      if(authUser) {
+        this.user = { username: this.user.username}
+      } else {
+        this.user = null
+      }
     }
-  }
 
-  isLoggedIn(): boolean {
-    return this.user !== null;
-  }
+    isLoggedIn(): boolean {
+      return this.user !== null;
+    }
 
-  logout() {
-    localStorage.removeItem('authUser');
-    window.alert('Logged out successfully!'); 
-    this.user = null;
-    this.router.navigate([''])
-  }
-
+    logout() {
+      localStorage.removeItem('authUser');
+      window.alert('Logged out successfully!'); 
+      this.user = null;
+      this.router.navigate([''])
+    }
+  */
 }
