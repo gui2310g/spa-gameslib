@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GameComponent } from '../../components/game/game.component';
 import { GameService } from '../../services/gameservice/gameservice.service';
 import { RouterLink } from '@angular/router';
-import { Games } from '../../models/game.model';
+import { Game } from '../../models/game.model';
 
 @Component({
   selector: 'app-searched-games',
@@ -14,7 +14,7 @@ import { Games } from '../../models/game.model';
 })
 export class SearchedGamesComponent implements OnInit {
   query: string = '';
-  games: Games[] = [];
+  games: Game[] = [];
 
   constructor(
     private route: ActivatedRoute,

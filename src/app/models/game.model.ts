@@ -1,16 +1,12 @@
-export interface Games {
-    id: number,
-    name: string,
-    slug: string
-}
-
 export interface Game {
     id: number;
     name: string,
     description: string,
     background_image: string,
     image_logo: string,
-    rating: number
+    released: string,
+    rating: number,
+    slug: string
 }
 
 export interface Images {
@@ -20,16 +16,19 @@ export interface Images {
   
 export interface Platforms {
     id: number;
+    slug: string,
     name: string;
 }
   
 export interface Genres {
     id: number,
+    slug: string,
     name: string
 }
   
 export interface Publishers {
     id: number,
+    slug: string,
     name: string
   }
   

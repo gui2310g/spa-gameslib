@@ -1,10 +1,10 @@
 @if(games.length > 0) {
     <div [ngClass]="{'gameSearch': styledInSearchPage, 'gameHome': !styledInSearchPage }">
-         @for (game of games; track game.id) {
+        @for (game of games; track game.id) {
             <a [routerLink]="['/game', game.id]">
                 <img [src]="game.slug" [alt]="game.name" />
             </a>
-         } 
+        } 
     </div>
     
     <a 
@@ -13,15 +13,6 @@
         >
             Click here to find more games
     </a>
-    
-    <p-paginator
-        (onPageChange)="onPageChange($event)" 
-        [first]="first"
-        [rows]="size" 
-        [totalRecords]="totalRecords"
-        [ngClass]="{'show': styledInSearchPage, 'hide': !styledInSearchPage}"
-    />
-    
- } @else {
+} @else {
      <p>No games in the moment</p>
- }
+}

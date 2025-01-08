@@ -1,29 +1,13 @@
-@mixin flex($direction, $justify, $align, $gap, $wrap) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
-    gap: $gap; 
-    flex-wrap: $wrap;
-}
-  
-@mixin width-height($width, $max-width, $height) {
-    width: $width;
-    max-width: $max-width;
-    height: $height;
-}
-
-@mixin margin-padding($margin, $padding) {
-    margin: $margin;
-    padding: $padding;
-}
+@use "../../utils/flex.scss";
+@use "../../utils/widthHeight.scss";
+@use "../../utils/marginPadding.scss";
 
 $color: white;
 $bgcolor: #555;
 
 /*global style */
 img { 
-  @include width-height(250px, 250px, auto);
+  @include widthHeight.widthHeight(250px, 250px, auto);
   object-fit: contain; 
 
   &:hover {
@@ -32,6 +16,7 @@ img {
     transition: all 0.5s;
   }
 }
+
 a { 
   text-decoration: none;
   color: $color;
@@ -40,7 +25,7 @@ a {
     color: #f7d354;
     transition: all 0.5s;
   }
- }
+}
 
 .show { display: block }
 .hide { display: none }
@@ -48,50 +33,28 @@ a {
 @media (max-width: 840px) { img { max-width: 180px;} }
 
 /* game class to GameSearch page */ 
+
 .gameSearch { 
-    @include flex(row, center, none, 50px, wrap);
-    @include width-height(100%, 850px, auto);
-    @include margin-padding(0 auto, none);
+  @include flex.flex(row, center, none, 50px, wrap);
+  @include widthHeight.widthHeight(100%, 850px, auto);
+  @include marginPadding.marginPadding(0 auto, none);
 }
 
-/* game class to Homepage */
 .gameHome {
-  @include flex(row, center, none, 50px, nowrap);
-  overflow-x: auto;
-}
+  @include flex.flex(row, center, none, 50px, nowrap);
+  overflow: hidden;
 
-::ng-deep {
-    .p-paginator {
-      @include flex(row, center, center, none, none);
-      margin-top: 20px;
-  
-      .p-paginator-page {
-        @include margin-padding(0 5px, 10px 15px);
-        background-color: #2a2a2a;
-        color: $color;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-  
-      .p-paginator-pages .p-paginator-page.p-highlight {
-        background-color: #1a73e8;
-        color: $color;
-      }
-  
-      .p-paginator-pages .p-paginator-page:hover { background-color: $bgcolor; }
-  
-      .p-paginator-prev, .p-paginator-next {
-        @include margin-padding(none, 10px 15px);
-        background-color: #2a2a2a;
-        color: $color;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-  
-      .p-paginator-prev:hover, .p-paginator-next:hover { background-color: $bgcolor; }
-  
-      .p-paginator-first, .p-paginator-last { display: none; }
+  a { 
+    animation: scroll 10s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
     }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }
