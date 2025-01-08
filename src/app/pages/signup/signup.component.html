@@ -1,23 +1,46 @@
 <article>
-    <h2>Gameslib</h2>
-    <div class="form">
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username" placeholder="Insert your username" required>
-        
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" placeholder="Insert your name" required>
-        
-        <label for="email">Email:</label>
-        <input id="email" type="email" formControlName="email" placeholder="Insert your email" required>
-        
-        <label for="password">Password:</label>
-        <input id="password" type="password" formControlName="password" placeholder="Insert your password" required>
-        
-        <button type="submit">Submit</button>
-      </form>
-      
-      <a href="/login">Already have an account? Log in here</a>
-    </div>
-  </article>
-  
+  <h2>Gameslib</h2>
+  <div class="form">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" method="post">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        placeholder="Insert your username"
+        required
+      />
+
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        placeholder="Insert your name"
+        required
+      />
+
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Insert your email"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Insert your password"
+        required
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <a href="/login">Already have an account? Log in here</a>
+  </div>
+</article>

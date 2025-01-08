@@ -15,7 +15,9 @@ export class GameService {
   }
 
   getGamesByPagination(page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/games/findAllByPage?page=${page}&size=${size}`);
+    return this.http.get<any>(
+      `${this.apiUrl}/games/findAllByPage?page=${page}&size=${size}`
+    );
   }
 
   getGame(id: number): Observable<any> {
@@ -26,16 +28,28 @@ export class GameService {
     return this.http.get<any>(`${this.apiUrl}/games/search?name=${name}`);
   }
 
-  getGenres(page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/genres/findAll?page=${page}&size=${size}`);
+  getGenres(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/genres/findAll`);
+  }
+
+  getGenresByPagination(page: number, size: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/genres/findAllByPage?page=${page}&size=${size}`
+    );
   }
 
   getGenresByGameId(gameId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/genres/game/${gameId}`);
   }
 
-  getPlatforms(page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/platforms/findAll?page=${page}&size=${size}`);
+  getPlatforms(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/platforms/findAll`);
+  }
+
+  getPlatformsByPagination(page: number, size: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/platforms/findAllByPage?page=${page}&size=${size}`
+    );
   }
 
   getPlatformsByGameId(gameId: number): Observable<any> {
@@ -43,10 +57,20 @@ export class GameService {
   }
 
   getPlatformsByGame(platformId: number, gameId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/games/platforms/find/${platformId}/${gameId}`);
+    return this.http.get<any>(
+      `${this.apiUrl}/games/platforms/find/${platformId}/${gameId}`
+    );
   }
-  getPublishers(page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/publishers/findAll?page=${page}&size=${size}`);
+  
+  getPublishers(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/publishers/findAll`
+    );
+  }
+
+  getPublishersByPagination(page: number, size: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/publishers/findAllByPage?page=${page}&size=${size}`
+    );
   }
 
   getPublishersByGameId(gameId: number): Observable<any> {

@@ -1,34 +1,40 @@
 import { Routes } from '@angular/router';
 import { GamePageComponent } from './pages/gamepage/gamepage.component';
-import { GamesSearchComponent } from './pages/gamesSearch/gamesSearch.component';
+import { GamesSearchComponent } from './pages/gamesSearch/gamesSearch.component'
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { SearchedGamesComponent } from './pages/searched-games/searched-games.component';
+import { SearchGamesComponent } from './pages/searchGames/searchGames.component'
 import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent
+    component: HomepageComponent,
+    data: { showNavFooter: true }
   },
   {
     path: 'search',
-    component: SearchedGamesComponent
+    component: SearchGamesComponent,
+    data: { showNavFooter: true }
   },
   {
     path: 'games',
-    component: GamesSearchComponent
+    component: GamesSearchComponent,
+    data: { showNavFooter: true }
   },
   {
     path: 'game/:id',
-    component: GamePageComponent
+    component: GamePageComponent,
+    data: { showNavFooter: true }
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    data: { showNavFooter: false }
   },
   {
     path: 'login',
-    component: SigninComponent
+    component: SigninComponent,
+    data: { showNavFooter: false }
   }
 ];

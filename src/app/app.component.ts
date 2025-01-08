@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -16,12 +16,12 @@ export class AppComponent implements OnInit{
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(() => {
-      const currentRoute = this.router.url;
-
-      this.showNavFooter = !(
-        currentRoute === '/signup' || currentRoute === '/login'
-      );
-    })    
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const currentRoute = this.router.routerState.root.firstChild;
+        this.showNavFooter = 
+          currentRoute?.snapshot.data['showNavFooter'] !== false;
+      }
+    });
   }
 }

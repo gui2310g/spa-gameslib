@@ -1,14 +1,14 @@
-article {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 5rem 0 5rem 0;         
+@use "../../utils/flex.scss";
+@use "../../utils/widthHeight.scss";
+@use "../../utils/marginPadding.scss";
 
+article {
+    @include flex.flex(none, space-around, none, 20px, none);
+    @include marginPadding.marginPadding(0 auto, 5rem 0 5rem 0);
+    max-width: 1200px;
+     
     @media (max-width: 840px) {
-        flex-direction: column-reverse;
-        justify-content: center;
+        @include flex.flex(column-reverse, center, none, 20px, none);
     }
 }
 

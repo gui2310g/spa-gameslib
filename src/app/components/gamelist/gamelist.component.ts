@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-gameslists',
-  templateUrl: './gameslists.component.html',
-  styleUrl: './gameslists.component.scss',
+  templateUrl: './gamelist.component.html',
+  styleUrl: './gamelist.component.scss',
   standalone: true,
   imports: [NgClass],
 })
 
-export class GamesListsComponent{
+export class GameListComponent{
     @Input() title: string = '';  
     @Input() description: string = ''; 
     @Input() src: string = '';  

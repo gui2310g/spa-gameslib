@@ -1,11 +1,10 @@
+@use "../../utils/flex.scss";
+@use "../../utils/marginPadding.scss";
+
 article {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    @include marginPadding.marginPadding(0 auto, 5rem 0 5rem 0);
+    @include flex.flex(column, center, center, none, none);
     color: white;
-    padding: 5rem 0 5rem 0;
     
     h2 { color: #f7d354}
 
@@ -16,10 +15,7 @@ article {
         border-radius: 20px;
        
         form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
+            @include flex.flex(column, none, none, 10px, none);
             input[type="text"] {
                 border-radius: 10px;
                 height: 25px;

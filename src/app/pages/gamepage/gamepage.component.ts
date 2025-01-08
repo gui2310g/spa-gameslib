@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { MatIconButton } from '@angular/material/button';
 import { GameService } from '../../services/gameservice/gameservice.service';
-import { Game, Images, Platforms, Genres, Publishers, Ratings } from '../../models/game.model';
+import { 
+  Game, 
+  Images, 
+  Platforms, 
+  Genres, 
+  Publishers, 
+  Ratings 
+} from '../../models/game.model';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [NgClass, MatIconButton],
+  imports: [NgClass],
   templateUrl: './gamepage.component.html',
   styleUrls: ['./gamepage.component.scss'],
 })
@@ -21,7 +27,10 @@ export class GamePageComponent implements OnInit {
   selectedImage: string = '';
   ratings: Ratings[] = [];
   
-  constructor(private gameService: GameService, private route: ActivatedRoute) {};
+  constructor(
+    private gameService: GameService, 
+    private route: ActivatedRoute
+  ) {};
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

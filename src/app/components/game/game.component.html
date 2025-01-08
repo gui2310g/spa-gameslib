@@ -1,5 +1,10 @@
 @if(games.length > 0) {
-    <div [ngClass]="{'gameSearch': styledInSearchPage, 'gameHome': !styledInSearchPage }">
+    <div 
+        [ngClass]="{
+            'gameSearch': styledInSearchPage, 
+            'gameHome': !styledInSearchPage 
+        }"
+    >
         @for (game of games; track game.id) {
             <a [routerLink]="['/game', game.id]">
                 <img [src]="game.slug" [alt]="game.name" />
