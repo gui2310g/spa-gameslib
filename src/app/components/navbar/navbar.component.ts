@@ -12,11 +12,15 @@ import { User } from '../../models/user.model';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {  
+export class NavbarComponent implements OnInit {  
   search = signal<string>("");
-  user!: User | any;
+  user!: User | undefined;
 
-  constructor(private router: Router) {};
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.UserStatus();
+  }
 
   handleSubmit(): void {
     if(this.search()) {
@@ -26,25 +30,28 @@ export class NavbarComponent {
     }
   }
 
-  /*
-    updateUserStatus() {
-      const authUser = localStorage.getItem('authUser');
-      if(authUser) {
-        this.user = { username: this.user.username}
-      } else {
-        this.user = null
+  UserStatus() {
+    const token = sessionStorage.getItem('token');
+    if(token) {
+      console.log('Token:', token);
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      this.user = { 
+        username: payload.sub,
+        email: '',
+        password: ''
       }
+      console.log('Username:', this.user.username); 
     }
+  }
 
-    isLoggedIn(): boolean {
-      return this.user !== null;
-    }
+  isLoggedIn(): boolean { 
+    return sessionStorage.getItem('token') !== null; 
+  }
 
-    logout() {
-      localStorage.removeItem('authUser');
-      window.alert('Logged out successfully!'); 
-      this.user = null;
-      this.router.navigate([''])
-    }
-  */
+  logout() {
+    sessionStorage.removeItem('token');
+    this.user = undefined;
+    window.alert('Logged out successfully!'); 
+    this.router.navigate([''])
+  }
 }

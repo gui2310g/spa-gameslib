@@ -1,5 +1,5 @@
-@use "../../utils/flex.scss";
-@use "../../utils/marginPadding.scss";
+@use "./flex.scss";
+@use "./marginPadding.scss";
 
 article {
     @include marginPadding.marginPadding(0 auto, 5rem 0 5rem 0);
@@ -16,7 +16,7 @@ article {
        
         form {
             @include flex.flex(column, none, none, 10px, none);
-            input[type="text"] {
+            input {
                 border-radius: 10px;
                 height: 25px;
                 border: none;

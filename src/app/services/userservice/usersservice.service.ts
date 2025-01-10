@@ -13,27 +13,27 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  createUser(user: User): Observable<any> {
+  createUser(user: User): Observable<User> {
     return this.http
-      .post<any>(`${this.apiUrl}/users/create`, user)
+      .post<User>(`${this.apiUrl}/users`, user)
       .pipe(catchError(this.handleError));
   }
 
   loginUser(loggedUser: LoggedUser): Observable<any> {
     return this.http
-      .post(`${this.apiUrl}/auth/login`, loggedUser, { responseType: 'text' }) 
+      .post(`${this.apiUrl}/auth`, loggedUser, { responseType: 'text' })
       .pipe(
         tap((token) => {
-          localStorage.setItem('authUser', token);
+          sessionStorage.setItem('token', token);
         }),
         catchError(this.handleError)
       );
   }
-  
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An error occurred. Please try again.';
     if (error.status === 409) errorMessage = 'User or email already exists';
-    
+
     return throwError(() => new Error(errorMessage));
   }
 }

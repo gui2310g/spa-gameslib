@@ -32,6 +32,11 @@ export interface Publishers {
     name: string
   }
   
+export interface Screenshots {
+    id: number,
+    url: string
+}  
+
 export interface Ratings {
     id: number,
     slug: string,

@@ -14,7 +14,7 @@ import { LoggedUser } from '../../models/user.model';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './signin.component.html',
-  styleUrl: './signin.component.scss'
+  styleUrl: '../../utils/form.scss'
 })
 export class SigninComponent implements OnInit{
   signInForm!: FormGroup;

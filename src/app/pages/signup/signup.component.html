@@ -1,22 +1,13 @@
 <article>
   <h2>Gameslib</h2>
   <div class="form">
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" method="post">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <label for="username">Username:</label>
       <input
         type="text"
         id="username"
         formControlName="username"
         placeholder="Insert your username"
-        required
-      />
-
-      <label for="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        formControlName="name"
-        placeholder="Insert your name"
         required
       />
 
@@ -37,7 +28,6 @@
         placeholder="Insert your password"
         required
       />
-
       <button type="submit">Submit</button>
     </form>
 
