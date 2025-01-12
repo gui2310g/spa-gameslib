@@ -8,20 +8,25 @@ import { User } from '../../models/user.model';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatIcon, MatIconButton, RouterLink, FormsModule],
+  imports: [MatIcon, RouterLink, FormsModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {  
+  isSidenavOpen = false; 
   search = signal<string>("");
   user!: User | undefined;
-
+ 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.UserStatus();
   }
 
+  toggleSidenav(): void {
+    this.isSidenavOpen = !this.isSidenavOpen;
+  }
+ 
   handleSubmit(): void {
     if(this.search()) {
       this.router.navigate(['/search'], { 
@@ -33,14 +38,12 @@ export class NavbarComponent implements OnInit {
   UserStatus() {
     const token = sessionStorage.getItem('token');
     if(token) {
-      console.log('Token:', token);
       const payload = JSON.parse(atob(token.split('.')[1]));
       this.user = { 
         username: payload.sub,
         email: '',
         password: ''
-      }
-      console.log('Username:', this.user.username); 
+      } 
     }
   }
 

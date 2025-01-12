@@ -1,9 +1,6 @@
 <nav>
     <div class="navbar-left">
-        <button mat-icon-button>
-            <mat-icon>view_headline</mat-icon>
-        </button>
-
+        <button (click)="toggleSidenav()" class="menu-button">☰</button>
         <a routerLink="/" class="title">Gameslib</a>
     </div>
 
@@ -21,11 +18,30 @@
    
     <div class="navbar-right">
         @if(isLoggedIn()) {
-            <span>{{user?.username}}</span>
-            <button (click)="logout()">Logout</button>
+            <span class="username">{{user?.username}}</span>
+            <a (click)="logout()">Logout</a>
         } @else {
-            <a href="/login">Log in</a>
-            <a href="/signup">Sign up</a>
+            <a routerLink="/login">Log in</a>
+            <a routerLink="/signup">Sign up</a>
+        }
+    </div>
+
+    <div class="sidenav" [class.open]="isSidenavOpen">
+        <button class="close-btn" (click)="toggleSidenav()">X</button>
+
+        @if(isLoggedIn()) {
+            <span class="username">{{user?.username}}</span>
+
+            <ul>
+                <li><a (click)="logout()">Logout</a></li>
+                <li><a routerLink="/login">Profile</a></li>
+                <li><a routerLink="/signup">Add Game</a></li>
+            </ul>
+        } @else {
+            <ul>
+                <li><a routerLink="/login">Log in</a></li>
+                <li><a routerLink="/signup">Sign up</a></li>
+            </ul>
         }
     </div>
 </nav>

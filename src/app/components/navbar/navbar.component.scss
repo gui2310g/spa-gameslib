@@ -7,24 +7,30 @@ nav {
     max-width: 100%;
     padding: 10px;
 
+    a, span {
+        color: white;
+        text-decoration: none;
+        margin-left: 10px;
+        padding: 10px;  
+        cursor: pointer;
+    }
+
+    .username {
+        cursor: default;
+        color: $primarycolor;
+    }
+
     .navbar-left {
         @include flex.flex(none, none, center, 10px, none);
         
-        button[mat-icon-button] {
+        .menu-button {
             background: transparent;
             border-radius: 10px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
             display: none;
-
-            mat-icon { 
-                color: white; 
-
-                &:hover {
-                    color: $primarycolor;
-                    transition: all 0.5s;
-                }
-            }
-
-            @media(max-width: 1024px) { display: block; }
         }
     
         .title {
@@ -55,22 +61,36 @@ nav {
         }
     }
 
-    .navbar-right a, span {
-        color: white;
-        text-decoration: none;
-        margin-left: 10px;
-        padding: 10px;  
+    .sidenav {
+        @include widthHeight.widthHeight(100%, 250px, 100%);
+        position: fixed;
+        top: 0;
+        left: -250px; 
+        background-color: #444;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 1;
+    
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        li { padding: 10px 16px; }   
     }
+      
+    .sidenav.open { left: 0; } 
 
     @media(max-width: 1024px) {
-        justify-content: space-between;
-        
-        .search-bar { width: 50%; }
-
         .navbar-left {
-            button[mat-icon-button] { display: block; }
+            .menu-button { display: block; }
         }
         
-        .navbar-right a { display: none; }
+        .navbar-right { display: none; }
     }
 }
