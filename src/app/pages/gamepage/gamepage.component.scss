@@ -90,10 +90,7 @@ article {
       cursor: pointer;
       border-radius: 2px;
 
-      &:hover {
-        background-color: gray;
-        transition: 0.5 all;
-      }
+      &:hover { background-color: gray; }
     }
   }
 

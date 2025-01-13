@@ -33,7 +33,14 @@
     </section>
 
     <section class="buttons-section">
-      <button mat-raised-button color="primary">+ Wishlist</button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="addGameToWishlist(); removeGameToWishlist()"
+      >
+        Wishlist
+      </button>
+      
       <button mat-raised-button color="primary">See your wishlist</button>
     </section>
 

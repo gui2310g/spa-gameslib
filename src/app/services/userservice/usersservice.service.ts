@@ -10,6 +10,8 @@ import { User, LoggedUser } from '../../models/user.model';
 })
 export class UserService {
   private apiUrl = environment.apiUrl;
+  token: string | null = sessionStorage.getItem('token');
+  headers = { Authorization: `Bearer ${this.token}` };
 
   constructor(private http: HttpClient) {}
 
@@ -28,6 +30,25 @@ export class UserService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  addGamestoUser(gameId: Number): Observable<any> {
+    return this.http
+      .post(
+        `${this.apiUrl}/users/wishlist/add/${gameId}`,
+        {},
+        { headers: this.headers }
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  removeGamestoUser(gameId: number): Observable<any> {
+    return this.http
+      .delete(
+        `${this.apiUrl}/users/wishlist/delete/${gameId}`,
+        { headers: this.headers }
+      )
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { GameService } from '../../services/gameservice/gameservice.service';
+import { UserService } from '../../services/userservice/usersservice.service';
 import { 
   Game, 
   Images, 
@@ -24,11 +25,12 @@ export class GamePageComponent implements OnInit {
   platforms: Platforms[] = [];
   publishers: Publishers[] = [];
   images: Images[] = [];
-  selectedImage: string = '';
   ratings: Ratings[] = [];
+  selectedImage: string = '';
   
   constructor(
     private gameService: GameService, 
+    private userService: UserService,
     private route: ActivatedRoute
   ) {};
 
@@ -48,6 +50,24 @@ export class GamePageComponent implements OnInit {
   LoadGame(id: number): void {
     this.gameService.getGame(id).subscribe({
       next: (data) => (this.game = data)
+    })
+  }
+
+  addGameToWishlist(): void {
+    if (!this.game?.id) return; 
+  
+    this.userService.addGamestoUser(this.game.id).subscribe({
+      next: () => alert('game added in your wishlist'),
+      error: (err) => console.error('Erro by adding game', err)
+    });
+  }
+
+  removeGameToWishlist(): void {
+    if (!this.game?.id) return;
+
+    this.userService.removeGamestoUser(this.game.id).subscribe({
+      next: () => alert('game removed in your wishlist'),
+      error: (err) => console.error('Erro by removing game', err)
     })
   }
 
