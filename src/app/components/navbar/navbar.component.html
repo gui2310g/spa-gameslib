@@ -19,6 +19,7 @@
     <div class="navbar-right">
         @if(isLoggedIn()) {
             <span class="username">{{user?.username}}</span>
+            <a routerLink="/wishlist">Profile</a>
             <a (click)="logout()">Logout</a>
         } @else {
             <a routerLink="/login">Log in</a>
@@ -34,8 +35,7 @@
 
             <ul>
                 <li><a (click)="logout()">Logout</a></li>
-                <li><a routerLink="/login">Profile</a></li>
-                <li><a routerLink="/signup">Add Game</a></li>
+                <li><a routerLink="/wishlist">Profile</a></li>
             </ul>
         } @else {
             <ul>

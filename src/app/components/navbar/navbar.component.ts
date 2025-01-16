@@ -51,9 +51,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.removeItem('token');
-    this.user = undefined;
-    window.alert('Logged out successfully!'); 
-    this.router.navigate([''])
+    sessionStorage.clear();
+    this.router.navigate(['']).then(() => {
+      window.alert("Logged outsuccessfully")
+    });
   }
 }

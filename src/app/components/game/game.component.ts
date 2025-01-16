@@ -24,7 +24,6 @@ export class GameComponent implements OnInit{
     this.gameService.getGames().subscribe({
       next: (data) => this.games = data,
       error: (error) => console.error("Error by finding games", error),
-      complete: () => console.log("Games loaded successfully")
     });
   }
 }

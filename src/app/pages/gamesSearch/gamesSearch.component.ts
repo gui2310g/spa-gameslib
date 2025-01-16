@@ -28,7 +28,6 @@ export class GamesSearchComponent {
     this.gameService.getGenres().subscribe({
       next: (data) => (this.genres = data),
       error: (error) => console.error('Error by finding genres', error),
-      complete: () => console.log('Genres loaded successfully'),
     });
   }
 
@@ -36,7 +35,6 @@ export class GamesSearchComponent {
     this.gameService.getPlatforms().subscribe({
       next: (data) => (this.platforms = data),
       error: (error) => console.error('Error by finding platforms', error),
-      complete: () => console.log('Platforms loaded succesfully'),
     });
   }
 
@@ -44,7 +42,6 @@ export class GamesSearchComponent {
     this.gameService.getPublishers().subscribe({
       next: (data) => (this.publishers = data),
       error: (error) => console.error('Error by finding publishers', error),
-      complete: () => console.log('Publishers loaded succesfully'),
     });
   }
 }

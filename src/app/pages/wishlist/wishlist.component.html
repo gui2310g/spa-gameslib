@@ -1,0 +1,27 @@
+<article>
+    <h2>{{user?.username}} wishlist</h2>
+  
+    <section class="game-section">
+        <div class="description-section">
+            @for (game of games; track game.id) {
+            <div class="game-card">
+                <div 
+                class="image-background"
+                style="background-image: url({{game.background_image}})">
+                </div>
+
+                <div class="game-info">
+                <h3>{{game.name}}</h3>
+                <p>Rating: <span>{{game.rating}}</span></p>
+                <p>Launch date: <span>{{game.released}}</span></p>
+                </div>
+
+                <div class="game-purchase">
+                    <a [routerLink]="['/game', game.id]">Game page</a>
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+  </article>
+  

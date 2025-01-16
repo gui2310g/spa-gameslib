@@ -16,7 +16,9 @@ import {
 })
 export class GameService {
   private apiUrl = environment.apiUrl;
- 
+  token: string | null = sessionStorage.getItem('token');
+  headers = { Authorization: `Bearer ${this.token}` };
+
   constructor(private http: HttpClient) {}
 
   getGames(): Observable<Game[]> {
@@ -35,6 +37,13 @@ export class GameService {
 
   getSearchedGame(name: string): Observable<Game[]> {
     return this.http.get<Game[]>(`${this.apiUrl}/games/search?name=${name}`);
+  }
+
+  getWishlistGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(
+      `${this.apiUrl}/games/findByAuth`, 
+      { headers: this.headers }
+    )
   }
 
   getGenres(): Observable<Genres[]> {

@@ -5,6 +5,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SearchGamesComponent } from './pages/searchGames/searchGames.component'
 import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +37,10 @@ export const routes: Routes = [
     path: 'login',
     component: SigninComponent,
     data: { showNavFooter: false }
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
+    data: { showNavFooter: true }
   }
 ];

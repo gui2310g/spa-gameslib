@@ -1,0 +1,65 @@
+@use "../../utils/flex.scss";
+@use "../../utils/widthHeight.scss";
+@use "../../utils/marginPadding.scss";
+
+article {
+    @include marginPadding.marginPadding(0 auto, 5rem 0 5rem 0);
+    max-width: 900px;
+    color: white;
+
+    .game-section {
+        @include flex.flex(column, none, none, 2rem, none);
+
+        .description-section {
+            @include flex.flex(column, none, none, 1rem, none);
+
+            .game-card {
+                @include flex.flex(row, none, center, 1rem, none);
+                background-color: #2a2a2a;
+                padding: 1rem;
+                border-radius: 8px;
+
+                .image-background {
+                    @include widthHeight.widthHeight(100%, 150px, 100px);
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: 8px;
+                }
+
+                .game-info {
+                    flex-grow: 1;
+
+                    h3 {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+
+                    p {
+                        margin: 0.5rem 0;
+
+                        span { color: #ccc; }
+                    }
+                }
+
+                .game-purchase {
+                    background-color: #5cae5c;
+                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+
+                    a { 
+                        text-decoration: none;
+                        color: white;
+                    }
+
+                    &:hover {
+                        transition: 0.2s all;
+                        background-color: #376637;
+                    }
+                }
+            }
+        }
+    }
+}
