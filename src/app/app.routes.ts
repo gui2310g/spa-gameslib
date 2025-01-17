@@ -6,6 +6,7 @@ import { SearchGamesComponent } from './pages/searchGames/searchGames.component'
 import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { AuthGuardService } from './services/authGuard/auth-guard.service';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,7 @@ export const routes: Routes = [
   {
     path: 'wishlist',
     component: WishlistComponent,
-    data: { showNavFooter: true }
+    data: { showNavFooter: true },
+    canActivate: [AuthGuardService]
   }
 ];

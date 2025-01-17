@@ -32,6 +32,10 @@ export class UserService {
       );
   }
 
+  isLoggedIn(): boolean { 
+    return sessionStorage.getItem('token') !== null; 
+  }
+
   addGamestoUser(gameId: Number): Observable<any> {
     return this.http
       .post(
